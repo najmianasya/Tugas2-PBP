@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched": true,
+            "title": "Jujutsu Kaisen 0",
+            "rating": "5",
+            "release_date": "2022-03-16",
+            "review": "Great animation and storyline."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":2,
+        "fields":{
+            "watched": true,
+            "title": "Spirited Away",
+            "rating": "5",
+            "release_date": "2001-07-20",
+            "review": "An unforgettable and magical animated movie."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":3,
+        "fields":{
+            "watched": false,
+            "title": "Gone Girl",
+            "rating": "5",
+            "release_date": "2014-10-3",
+            "review": "A funny thriller movie with unexpected plot twists."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":4,
+        "fields":{
+            "watched": true,
+            "title": "Bird Box",
+            "rating": "4",
+            "release_date": "2018-12-14",
+            "review": "Unique storyline and incredible casts."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":5,
+        "fields":{
+            "watched": true,
+            "title": "The Greatest Showman",
+            "rating": "5",
+            "release_date": "2017-12-19",
+            "review": "A spectacular musical movie with amazing soundtracks."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":6,
+        "fields":{
+            "watched": true,
+            "title": "The Lion King",
+            "rating": "4",
+            "release_date": "2019-07-17",
+            "review": "A classic. One of my favorite Disney movie ever."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":7,
+        "fields":{
+            "watched": true,
+            "title": "Happy Death Day",
+            "rating": "4",
+            "release_date": "2017-10-18",
+            "review": "Interesting storyline and easy to watch."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":8,
+        "fields":{
+            "watched": false,
+            "title": "The King's Man",
+            "rating": "4",
+            "release_date": "2021-12-22",
+            "review": "Funny and intense."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":9,
+        "fields":{
+            "watched": true,
+            "title": "Enola Holmes",
+            "rating": "4",
+            "release_date": "2020-09-23",
+            "review": "A fun and energetic movie with beautiful cinematography."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":10,
+        "fields":{
+            "watched": true,
+            "title": "Soul",
+            "rating": "5",
+            "release_date": "2020-10-11",
+            "review": "A beautiful animated movie with an important message."
+        }
+    }
+]    
