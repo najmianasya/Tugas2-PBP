@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My To-Do List</h1>
+
+<h4>Username: </h4>
+<p>{{username}}</p>
+
+<button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
+
+<table border='2', style='border-collapse:collapse; margin-top: 20px;', cellpadding='10px' >
+    <tr>
+        <th>Creation Date</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Update Task Status</th>
+        <th>Delete Task</th>
+    </tr>
+    {% for task in todo_list %}
+    <tr>
+        <td>{{task.date}}</td>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>
+            {% if task.is_finished %}
+            Finished
+            {% else %}
+            Not Finished
+            {% endif %}
+        </td>
+        <td>
+            <button><a href="{% url 'todolist:update-task' task.id %}" >Update Task</a></button>
+        </td>
+        <td>
+            <button><a href="{% url 'todolist:delete-task' task.id %}" title="">Delete Task</a></button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
