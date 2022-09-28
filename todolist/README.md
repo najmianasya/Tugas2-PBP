@@ -27,8 +27,8 @@ Ketika pengguna men-submit data melalui sebuah HTML form, akan terbuat sebuah re
 * Mengimport dan menambahkan path url dari fungsi-fungsi yang sudah dibuat sebelumnya pada file `views.py` ke dalam bagian `urlpatterns` pada file `urls.py` agar setiap views dapat diakses dengan url yang sesuai.
 
 ## References
-https://www.educative.io/answers/what-is-a-csrf-token-in-django
-https://docs.djangoproject.com/en/4.0/topics/forms/#rendering-fields-manually
-https://www.geeksforgeeks.org/render-django-form-fields-manually/
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
-https://www.codesnail.com/todo-app-in-django-part-5-create-retrieve-update-and-delete-task-crud-operation-in-django/
+* https://www.educative.io/answers/what-is-a-csrf-token-in-django
+* https://docs.djangoproject.com/en/4.0/topics/forms/#rendering-fields-manually
+* https://www.geeksforgeeks.org/render-django-form-fields-manually/
+* https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
+* https://www.codesnail.com/todo-app-in-django-part-5-create-retrieve-update-and-delete-task-crud-operation-in-django/
