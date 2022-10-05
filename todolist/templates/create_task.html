@@ -2,22 +2,33 @@
 
 {% block meta %}
 <title>Tambah Task Baru</title>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 {% endblock meta %}
 
 {% block content %}
 
 <div class = "create">
 
-    <h1>Form Task Baru</h1>
+    <p class="h3 text-center">Create New Task</p>
+    <hr />
 
-    <form method="POST" action="">
+    <form method="POST" action="" class="form-container">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
-        <input type="submit" name="submit" value="Tambah Task">
+        <input class="btn btn-primary my-2" type="submit" name="submit" value="Tambah Task">
     </form>
     
 </div>
 
 {% endblock content %}
+
+<!-- References: https://youtu.be/6-XXvUENY_8 -->

@@ -32,3 +32,43 @@ Ketika pengguna men-submit data melalui sebuah HTML form, akan terbuat sebuah re
 * https://www.geeksforgeeks.org/render-django-form-fields-manually/
 * https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
 * https://www.codesnail.com/todo-app-in-django-part-5-create-retrieve-update-and-delete-task-crud-operation-in-django/
+
+---
+
+# Tugas 5 PBP
+
+## Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+* Pada inline style, kode CSS diletakkan di dalam tag dari elemen-elemen HTML menggunakan atribut `style`, contohnya `<body style="background-color: blue;">`.
+Kelebihan: berguna ketika ingin melakukan perubahan dengan cepat dan mengujicoba style tertentu pada suatu elemen.
+Kekurangan: cenderung kurang efektif jika harus menerapkan style yang sama ke beberapa elemen berbeda, membuat file HTML terlihat penuh dan kurang rapi.
+* Pada internal style, kode CSS diletakkan di bagian `<head>` dari file HTML dalam tag `<style></style>`.
+Kelebihan: dapat menerapkan style tertentu secara khusus untuk suatu halaman HTML sehingga tidak bercampur dengan style untuk halaman HTML lainnya.
+Kekurangan: menambahkan kode CSS ke dalam file HTML berpotensi memperbesar ukuran memori file dan memperlambat loading time.
+* Pada external style, kode CSS diletakkan di file khusus (.css) dan dapat dihubungkan dengan file HTML dengan cara mencantumkan link atau path dari file .css tersebut pada atribut `href` dalam tag `<link/>` dan meletakkannya pada bagian `<head>` dari file HTML.
+Kelebihan: dapat digunakan untuk beberapa halaman HTML secara bersamaan, membuat struktur file HTML menjadi lebih rapi.
+Kekurangan: jika terdapat perubahan, maka halaman HTML berpotensi untuk tidak di-render dengan benar hingga file CSS di-save dan di-load ke dalam file HTML dengan benar.
+
+## Jelaskan tag HTML5 yang kamu ketahui.
+Di luar dari tag HTML dasar seperti `<title>`, `<body>`, `<p>`, dan `<div>` yang tersedia pada HTML, beberapa tag baru pada HTML5 yang saya ketahui adalah:
+* Tag `<article>`, yang digunakan untuk mendefinisikan konten yang bersifat independen terhadap konten lainnya pada dokumen atau halaman HTML
+* tag `<aside>`, yang digunakan untuk mendefinisikan elemen pelengkap dari artikel utama pada dokumen atau halaman HTML, contohnya sidebar
+* Tag `<footer>`, yang digunakan untuk mendefinisikan footer dari dokumen atau halaman HTML
+* Tag `<header>`, yang digunakan untuk mendefinisikan title dan heading dari dokumen atau halaman HTML
+* Tag `<nav>`, yang digunakan untuk mendefinisikan section navigasi dari dokumen atau halaman HTML yang dapat membantu user dalam menavigasi halaman web
+* Tag `<section>`, yang digunakan untuk membagi konten yang ada pada dokumen atau halaman HTML ke beberapa bagian
+
+## Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+* Universal selector (`*`) digunakan untuk men-select semua elemen yang ada di dalam file.
+* Element selector (`elementname`) digunakan untuk men-select semua elemen dengan tipe tertentu, contohnya `h1` akan men-select semua elemen `h1` yang ada di dalam file.
+* Class selector (`.classname`) digunakan untuk men-select semua elemen dengan atribut class tertentu, contohnya `.login` akan men-select semua elemen dengan atribut `class="login"`.
+* ID Selector (`#idname`) digunakan untuk men-select elemen dengan atribut id tersebut, contohnya `#one` akan men-select elemen dengan atribut `id="one"`.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+* Pertama, saya memasukkan link stylesheet CSS Bootstrap serta path dari file CSS yang saya kustomisasi ke dalam file `base.html`.
+* Kemudian, saya melakukan styling pada berbagai elemen dari halaman-halaman HTML yang ada di tugas 4, seperti halaman login, registrasi, halaman to-do list, serta halaman form untuk membuat task baru. Hal tersebut saya lakukan dengan memanfaatkan Bootstrap dan mengatur file CSS agar halaman HTML dapat terlihat seperti yang saya harapkan.
+* Untuk membuat halaman-halaman tersebut responsif, saya memanfaatkan breakpoints pada Bootstrap yang mengimplementasikan media queries CSS. Breakpoints yang saat ini tersedia pada Bootstrap adalah `sm` (small), `md` (medium), `lg` (large), `xl`(extra large), serta `xxl` (extra extra large). Breakpoints dapat diimplementasikan dengan komponen lain dari Bootstrap, antara lain `grid` dan `spacing`.
+
+## References
+* https://www.hostinger.com/tutorials/difference-between-inline-external-and-internal-css
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+https://www.geeksforgeeks.org/html5-new-tags/

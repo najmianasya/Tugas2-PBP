@@ -1,45 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>My To-Do List</h1>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <a class="navbar-brand font-weight-bold" href="#">TO-DO LIST</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="#">Tasks <span class="sr-only">(current)</span></a> 
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-primary"><a href="{% url 'todolist:logout' %}" class="btnlink">Logout</a></button>
+        </form>
+    </div>
+</nav>
 
-<h4>Username: </h4>
-<p>{{username}}</p>
+<p class="h5 mx-5 my-4">Username: {{username}}</p>
+<p class="h1 mx-5 my-4">My To-Do List</p>
 
-<button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
+<button class="btn btn-primary mx-5"><a href="{% url 'todolist:create-task' %}" class="btnlink">Tambah Task Baru</a></button>
 
-<table border='2', style='border-collapse:collapse; margin-top: 20px;', cellpadding='10px' >
-    <tr>
-        <th>Creation Date</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Update Task Status</th>
-        <th>Delete Task</th>
-    </tr>
-    {% for task in todo_list %}
-    <tr>
-        <td>{{task.date}}</td>
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>
-            {% if task.is_finished %}
-            Finished
-            {% else %}
-            Not Finished
-            {% endif %}
-        </td>
-        <td>
-            <button><a href="{% url 'todolist:update-task' task.id %}" >Update Task</a></button>
-        </td>
-        <td>
-            <button><a href="{% url 'todolist:delete-task' task.id %}" title="">Delete Task</a></button>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container-fluid m-3">
+    <div class="row">
+        {% for task in todo_list %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="card my-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{task.title}}
+                        <span class="badge badge-secondary">
+                            {% if task.is_finished %}
+                            Finished
+                            {% else %}
+                            Not Finished
+                            {% endif %}
+                        </span>
+                    </h5>
+                    <h6 class="card-subtitle my-2 text-muted">Created on {{task.date}}</h6>
+                    <p class="card-text">{{task.description}}</p>
+                    <button class="btn btn-primary btn-sm m-1"><a href="{% url 'todolist:update-task' task.id %}" class="btnlink">Update Task</a></button>
+                    <button class="btn btn-danger btn-sm m-1"><a href="{% url 'todolist:delete-task' task.id %}" class="btnlink">Delete Task</a></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+<p class="h5 m-4">Sesi terakhir login: {{ last_login }}</p>
 
 {% endblock content %}

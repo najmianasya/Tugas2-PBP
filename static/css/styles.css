@@ -1,0 +1,62 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4F4F4;
+}
+
+.login, .register, .create {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #CCDCDA;
+}
+
+.login {
+    width: 350px;
+}
+
+.register{
+    width: 900px;
+}
+
+.create {
+    width: 650px;
+}
+
+.btn-primary {
+    background-color: #664F69;
+    border-color: #664F69;
+}
+
+.btn-primary:hover, .navbar .btn:hover {
+    background-color: #553A58;
+}
+
+.navbar .btn .btnlink, .navbar .navbar-brand, .link, .link:hover {
+    color: #664F69;
+}
+
+.navbar {
+    background-color: #CCDCDA;
+}
+
+.navbar .btn {
+    border-color: #664F69;
+}
+
+.navbar .btn .btnlink:hover, .btnlink, .btnlink:hover {
+    color: white;
+}
+
+.card {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.card-title, .h3, .h1 {
+    font-weight: 600;
+}
+
+/* bonus */
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
