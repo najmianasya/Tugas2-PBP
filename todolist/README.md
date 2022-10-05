@@ -6,7 +6,7 @@ NPM: 2106639825
 
 Kelas: PBP C
 
-Link Aplikasi Heroku: https://tugas2-pbp-katalog.herokuapp.com/
+Link Aplikasi Heroku: https://tugas2-pbp-katalog.herokuapp.com/todolist/
 
 ## Apa kegunaan {% csrf_token %} pada elemen <form>? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen <form>?
 `{% csrf_token %}` merupakan potongan kode yang berfungsi untuk melindungi website serta pengguna dari serangan Cross Site Request Forgeries (CSRF). CSRF merupakan serangan di mana sebuah form yang telah dimodifikasi di situs lain dikirim kembali kepada pengguna yang telah terautentikasi sehingga dapat menyebabkan eksploitasi data pengguna oleh pihak yang tidak bertanggung jawab. Menggunakan `{% csrf_token %}`, Django dapat membuat suatu token pada server-side dan memastikan bahwa setiap request yang diterima oleh server mengandung token tersebut. Jika request tidak mengandung token tersebut, maka request tidak akan dieksekusi sehingga data pengguna dapat terlindungi. Jika suatu website tidak mengimplementasikan `{% csrf_token %}`, maka website tersebut akan berada dalam risiko yang lebih tinggi untuk mendapat serangan CSRF dari pihak yang tidak bertanggung jawab. 
@@ -33,7 +33,9 @@ Ketika pengguna men-submit data melalui sebuah HTML form, akan terbuat sebuah re
 * https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
 * https://www.codesnail.com/todo-app-in-django-part-5-create-retrieve-update-and-delete-task-crud-operation-in-django/
 
+
 ---
+
 
 # Tugas 5 PBP
 
@@ -70,5 +72,5 @@ Di luar dari tag HTML dasar seperti `<title>`, `<body>`, `<p>`, dan `<div>` yang
 
 ## References
 * https://www.hostinger.com/tutorials/difference-between-inline-external-and-internal-css
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
-https://www.geeksforgeeks.org/html5-new-tags/
+* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+* https://www.geeksforgeeks.org/html5-new-tags/
