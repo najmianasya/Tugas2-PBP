@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <a class="navbar-brand font-weight-bold" href="#">TO-DO LIST</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,34 +21,103 @@
 <p class="h5 mx-5 my-4">Username: {{username}}</p>
 <p class="h1 mx-5 my-4">My To-Do List</p>
 
-<button class="btn btn-primary mx-5"><a href="{% url 'todolist:create-task' %}" class="btnlink">Tambah Task Baru</a></button>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mx-5" data-toggle="modal" data-target="#exampleModal">Add Task</button>
 
-<div class="container-fluid m-3">
-    <div class="row">
-        {% for task in todo_list %}
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="card my-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{task.title}}
-                        <span class="badge badge-secondary">
-                            {% if task.is_finished %}
-                            Finished
-                            {% else %}
-                            Not Finished
-                            {% endif %}
-                        </span>
-                    </h5>
-                    <h6 class="card-subtitle my-2 text-muted">Created on {{task.date}}</h6>
-                    <p class="card-text">{{task.description}}</p>
-                    <button class="btn btn-primary btn-sm m-1"><a href="{% url 'todolist:update-task' task.id %}" class="btnlink">Update Task</a></button>
-                    <button class="btn btn-danger btn-sm m-1"><a href="{% url 'todolist:delete-task' task.id %}" class="btnlink">Delete Task</a></button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Task Baru</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form id="form-add-task" onsubmit="return false;">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="title">Judul Task Baru</label>
+                        <input type="text" name="title" class="form-control mb-2" id="title" placeholder="Judul Task Baru">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Deskripsi Task Baru</label>
+                        <textarea type="text" name="description" class="form-control mb-2" id="description" placeholder="Deskripsi Task Baru"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="add-todo" data-dismiss="modal">Tambah Task Baru</button>
+                </div>
+            </form>
         </div>
-        {% endfor %}
     </div>
+</div>
+
+<!-- Todo Cards -->
+<div class="container-fluid m-3">
+    <div class="row" id="todo-card"></div>
 </div>
 
 <p class="h5 m-4">Sesi terakhir login: {{ last_login }}</p>
 
+<script>
+    async function getTodolist() {
+        return fetch("{% url 'todolist:show_todolist_json' %}").then((res) => res.json());
+    }
+    
+    // AJAX GET
+    async function refreshTodolist() {
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("todo-card").innerHTML = "";
+        const todolist = await getTodolist();
+        let htmlStr = ``;
+        todolist.forEach((task) => {
+            let is_finished = task.fields.is_finished ? "Finished" : "Not Finished";
+            htmlStr += `\n<div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div id="${task.pk}" class="card my-3" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${task.fields.title}
+                                                <span class="badge badge-secondary">
+                                                    ${is_finished}
+                                                </span>
+                                            </h5>
+                                            <h6 class="card-subtitle my-2 text-muted">Created on ${task.fields.date}</h6>
+                                            <p class="card-text">${task.fields.description}</p>
+                                            <button class="btn btn-primary btn-sm m-1"><a href="update-task/${task.pk}" class="btnlink">Update Task</a></button>
+                                            <button class="btn btn-danger btn-sm m-1" onclick="deleteTodolist(${task.pk})">Delete Task</a></button>
+                                        </div>
+                                    </div>
+                                </div>`;
+        })
+        
+        document.getElementById("todo-card").innerHTML = htmlStr;
+    }
+
+    // AJAX POST
+    function addTodolist() {
+        fetch("{% url 'todolist:add_task' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form-add-task'))
+        }).then(refreshTodolist);
+        return false;
+    }
+
+    // AJAX DELETE (Bonus Tugas 6)
+    function deleteTodolist(pk) {
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        fetch(`/todolist/delete-task/${pk}`, {
+            method: "DELETE",
+            credentials: 'same-origin',
+            headers: {
+                "X-CSRFToken": `${csrftoken}`
+            }
+        }).then(refreshTodolist)
+      return false
+    }
+
+    document.getElementById("add-todo").onclick = addTodolist;
+    refreshTodolist();
+</script>
 {% endblock content %}
