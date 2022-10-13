@@ -107,14 +107,14 @@
     // AJAX DELETE (Bonus Tugas 6)
     function deleteTodolist(pk) {
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        fetch(`/todolist/delete-task/${pk}`, {
+        fetch(`/todolist/delete/${pk}`, {
             method: "DELETE",
             credentials: 'same-origin',
             headers: {
                 "X-CSRFToken": `${csrftoken}`
             }
-        }).then(refreshTodolist)
-      return false
+        }).then(refreshTodolist);
+      return false;
     }
 
     document.getElementById("add-todo").onclick = addTodolist;
